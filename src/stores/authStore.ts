@@ -46,12 +46,21 @@ export const useAuthStore = create<AuthState>()(
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
         } catch (error: any) {
-          const errorMessage = error?.response?.data?.message || error?.message || 'Login failed';
+          let errorMessage = 'Login failed. Please try again.';
+          const status = error?.response?.status;
+          const message = error?.response?.data?.message || error?.message;
+
+          // Handle specific error status codes
+          if (status === 404 || status === 400 || status === 401) {
+            errorMessage = 'Incorrect email or password';
+          } else if (message) {
+            errorMessage = message;
+          }
+
           set({
             error: errorMessage,
             isLoading: false,
           });
-          throw error;
         }
       },
 

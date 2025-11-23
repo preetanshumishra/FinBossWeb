@@ -39,9 +39,7 @@ export const Login = () => {
       await login(formData);
       navigate('/dashboard');
     } catch (err) {
-      setLocalError(
-        err instanceof Error ? err.message : 'Login failed. Please try again.'
-      );
+      // Error is handled and set in the store
     }
   };
 
