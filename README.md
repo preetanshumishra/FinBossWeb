@@ -224,10 +224,12 @@ The application features comprehensive mobile responsive design with optimized l
 - **Touch Targets**: All interactive elements meet 44x44px minimum touch target size
 - **Responsive Typography**: Font sizes scale appropriately for readability
 - **Flexible Layouts**: Grid and flex layouts adapt to container width
-- **Navigation**: Hamburger menu collapses on mobile with smooth animations
+- **Navigation**: Hamburger menu collapses on mobile with smooth animations, theme button has transparent background
 - **Forms**: Input fields expand to full width for better mobile usability
 - **Charts**: Dynamic chart sizing and legend repositioning for mobile views
 - **Budget Cards**: Consistent side-by-side layout of title and action buttons on all sizes
+- **Transaction Cards**: Card-based layout on mobile with organized fields (Date/Description, Category/Type, Amount/Actions) for better readability
+- **Export Button**: Simplified state management with immediate visual feedback on toggle
 
 ## Dark Mode
 

@@ -5,8 +5,8 @@
   width: 40px;
   height: 40px;
   border: none;
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  background-color: transparent;
+  color: white;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -45,5 +45,6 @@
     width: 36px;
     height: 36px;
     font-size: 18px;
+    background-color: transparent;
   }
 }
