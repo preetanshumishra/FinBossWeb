@@ -246,6 +246,39 @@ npm run test -- Settings.test.tsx
 | `VITE_API_BASE_URL` | Backend API base URL | `http://localhost:3000` |
 | `VITE_APP_NAME` | Application name | `FinBoss` |
 
+## API Integration
+
+The frontend communicates with the FinBoss API backend using Axios. All API services are located in `src/services/`:
+
+### Services
+
+- **authService.ts** - Authentication (login, register, profile, preferences, password)
+- **transactionService.ts** - Transaction operations (CRUD, summary, trends, forecast, categories)
+- **budgetService.ts** - Budget management (CRUD, overview, status)
+- **categoryService.ts** - Category management (list, create, update, delete)
+- **analyticsService.ts** - Analytics (budget vs actual comparisons)
+
+### API Response Structure
+
+All API endpoints return responses in the following format:
+
+```json
+{
+  "status": "success" | "error",
+  "message": "Optional message",
+  "data": { /* actual response data */ }
+}
+```
+
+Frontend services automatically extract the `data` property using `response.data.data`, so components receive clean data objects.
+
+### Authentication
+
+- JWT tokens stored in localStorage
+- Access tokens included in `Authorization: Bearer <token>` headers
+- Tokens managed by Zustand auth store
+- Automatic logout on token expiration
+
 ## Deployment
 
 ### Deployment to Vercel
@@ -300,6 +333,30 @@ See [FinBossAPI README](https://github.com/preetanshumishra/FinBossAPI) for back
 - [ ] TypeScript compilation passes (`npm run type-check`)
 
 ## Troubleshooting
+
+### API Connection Issues
+
+If you see errors connecting to the API:
+
+1. **Verify API is running**: Check `VITE_API_BASE_URL` is accessible
+   ```bash
+   curl http://localhost:3000/health
+   ```
+
+2. **Check environment variables**: Ensure `.env` has correct base URL
+   ```env
+   VITE_API_BASE_URL=http://localhost:3000
+   ```
+
+3. **Verify authentication**: JWT tokens should be stored in localStorage
+   - Open browser DevTools → Application → LocalStorage
+   - Check for `accessToken` and `refreshToken` keys
+
+4. **API Response Structure**: All services expect wrapped responses
+   ```json
+   { "status": "success", "data": { /* actual data */ } }
+   ```
+   If the API returns a different structure, update the corresponding service method
 
 ### CORS Issues
 

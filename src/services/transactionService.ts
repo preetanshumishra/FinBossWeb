@@ -42,23 +42,23 @@ export const transactionService = {
     page?: number;
     limit?: number;
   }): Promise<PaginatedTransactions> => {
-    const response = await api.get<PaginatedTransactions>('/transactions', { params: filters });
-    return response.data;
+    const response = await api.get<{ status: string; data: PaginatedTransactions }>('/transactions', { params: filters });
+    return response.data.data;
   },
 
   getById: async (id: string): Promise<Transaction> => {
-    const response = await api.get<Transaction>(`/transactions/${id}`);
-    return response.data;
+    const response = await api.get<{ status: string; data: Transaction }>(`/transactions/${id}`);
+    return response.data.data;
   },
 
   create: async (data: TransactionRequest): Promise<Transaction> => {
-    const response = await api.post<Transaction>('/transactions', data);
-    return response.data;
+    const response = await api.post<{ status: string; data: Transaction }>('/transactions', data);
+    return response.data.data;
   },
 
   update: async (id: string, data: Partial<TransactionRequest>): Promise<Transaction> => {
-    const response = await api.put<Transaction>(`/transactions/${id}`, data);
-    return response.data;
+    const response = await api.put<{ status: string; data: Transaction }>(`/transactions/${id}`, data);
+    return response.data.data;
   },
 
   delete: async (id: string): Promise<void> => {
@@ -66,18 +66,18 @@ export const transactionService = {
   },
 
   getSummary: async (filters?: { startDate?: string; endDate?: string }): Promise<TransactionSummary> => {
-    const response = await api.get<TransactionSummary>('/transactions/summary', {
+    const response = await api.get<{ status: string; data: TransactionSummary }>('/transactions/summary', {
       params: filters,
     });
-    return response.data;
+    return response.data.data;
   },
 
   getByCategory: async (filters?: { startDate?: string; endDate?: string }): Promise<CategoryBreakdown[]> => {
-    const response = await api.get<CategoryBreakdown[]>(
+    const response = await api.get<{ status: string; data: CategoryBreakdown[] }>(
       '/transactions/analytics/category',
       { params: filters }
     );
-    return response.data;
+    return response.data.data;
   },
 
   getTrends: async (filters?: {

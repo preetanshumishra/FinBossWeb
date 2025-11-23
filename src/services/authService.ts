@@ -20,23 +20,23 @@ export interface UserPreferences {
 
 export const authService = {
   register: async (data: RegisterRequest): Promise<AuthResponse> => {
-    const response = await api.post<AuthResponse>('/auth/register', data);
-    return response.data;
+    const response = await api.post<{ status: string; message: string; data: AuthResponse }>('/auth/register', data);
+    return response.data.data;
   },
 
   login: async (data: LoginRequest): Promise<AuthResponse> => {
-    const response = await api.post<AuthResponse>('/auth/login', data);
-    return response.data;
+    const response = await api.post<{ status: string; message: string; data: AuthResponse }>('/auth/login', data);
+    return response.data.data;
   },
 
   refresh: async (refreshToken: string): Promise<AuthResponse> => {
-    const response = await api.post<AuthResponse>('/auth/refresh', { refreshToken });
-    return response.data;
+    const response = await api.post<{ status: string; data: AuthResponse }>('/auth/refresh', { refreshToken });
+    return response.data.data;
   },
 
   getProfile: async (): Promise<User> => {
-    const response = await api.get<User>('/auth/profile');
-    return response.data;
+    const response = await api.get<{ status: string; data: User }>('/auth/profile');
+    return response.data.data;
   },
 
   updateProfile: async (data: ProfileUpdateRequest): Promise<User> => {

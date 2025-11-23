@@ -3,23 +3,23 @@ import type { Budget, BudgetRequest, BudgetStatus } from '../types';
 
 export const budgetService = {
   getAll: async (): Promise<Budget[]> => {
-    const response = await api.get<Budget[]>('/budgets');
-    return response.data;
+    const response = await api.get<{ status: string; data: Budget[] }>('/budgets');
+    return response.data.data;
   },
 
   getById: async (id: string): Promise<Budget> => {
-    const response = await api.get<Budget>(`/budgets/${id}`);
-    return response.data;
+    const response = await api.get<{ status: string; data: Budget }>(`/budgets/${id}`);
+    return response.data.data;
   },
 
   create: async (data: BudgetRequest): Promise<Budget> => {
-    const response = await api.post<Budget>('/budgets', data);
-    return response.data;
+    const response = await api.post<{ status: string; data: Budget }>('/budgets', data);
+    return response.data.data;
   },
 
   update: async (id: string, data: Partial<BudgetRequest>): Promise<Budget> => {
-    const response = await api.put<Budget>(`/budgets/${id}`, data);
-    return response.data;
+    const response = await api.put<{ status: string; data: Budget }>(`/budgets/${id}`, data);
+    return response.data.data;
   },
 
   delete: async (id: string): Promise<void> => {
@@ -27,7 +27,7 @@ export const budgetService = {
   },
 
   getOverview: async (): Promise<BudgetStatus[]> => {
-    const response = await api.get<BudgetStatus[]>('/budgets/status/overview');
-    return response.data;
+    const response = await api.get<{ status: string; data: BudgetStatus[] }>('/budgets/status/overview');
+    return response.data.data;
   },
 };
