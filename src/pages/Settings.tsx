@@ -182,6 +182,7 @@ export const Settings = () => {
 
   // Preferences handlers
   const handlePreferenceChange = async (preference: string) => {
+    const previousPreferences = preferences;
     const updatedPreferences = {
       ...preferences,
       [preference]: !preferences[preference as keyof typeof preferences],
@@ -196,7 +197,7 @@ export const Settings = () => {
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to update preferences';
       // Revert the local change
-      setPreferences(preferences);
+      setPreferences(previousPreferences);
       addToast({ message: errorMessage, type: 'error' });
     }
   };

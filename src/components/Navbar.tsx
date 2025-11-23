@@ -26,8 +26,8 @@ export const Navbar = () => {
           FinBoss
         </Link>
 
-        <button className="menu-toggle" onClick={toggleMenu}>
-          <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
+        <button className="menu-toggle" onClick={toggleMenu} title={isMenuOpen ? 'Close menu' : 'Open menu'}>
+          {isMenuOpen ? '✕' : '☰'}
         </button>
 
         <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>

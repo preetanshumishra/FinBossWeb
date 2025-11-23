@@ -232,7 +232,7 @@
   right: 0;
   bottom: 0;
   background-color: var(--border-color);
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
   border-radius: 28px;
 }
 
@@ -244,7 +244,7 @@
   left: 4px;
   bottom: 4px;
   background-color: var(--bg-primary);
-  transition: 0.3s;
+  transition: transform 0.3s ease;
   border-radius: 50%;
 }
 
@@ -390,12 +390,14 @@ input:checked + .toggle-slider:before {
   }
 
   .preference-item {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .preference-item .toggle-switch {
-    margin-top: 12px;
+    margin-top: 0;
+    flex-shrink: 0;
   }
 
   .modal-content {

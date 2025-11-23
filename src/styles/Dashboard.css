@@ -182,6 +182,7 @@
   flex-direction: column;
   gap: 6px;
   flex: 1;
+  justify-content: center;
 }
 
 .transaction-category {
@@ -205,6 +206,9 @@
   font-size: 16px;
   white-space: nowrap;
   margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .transaction-amount.income {
@@ -475,8 +479,10 @@
 
 .legend-content {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .legend-label {
@@ -512,13 +518,15 @@
   }
 
   .transaction-item {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
   }
 
   .transaction-amount {
-    margin-left: 0;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .budgets-grid {
@@ -549,5 +557,152 @@
 
   .analytics-card {
     padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 16px 12px;
+  }
+
+  .summary-section h1 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summary-card {
+    padding: 16px;
+  }
+
+  .card-icon {
+    font-size: 28px;
+  }
+
+  .card-label {
+    font-size: 12px;
+  }
+
+  .card-amount {
+    font-size: 18px;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .analytics-card {
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .type-breakdown-container {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .type-breakdown-chart {
+    width: 100px;
+    height: 100px;
+  }
+
+  .type-breakdown-legend {
+    width: 100%;
+  }
+
+  .breakdown-bar-container {
+    height: 4px;
+  }
+
+  .transactions-section {
+    margin-bottom: 20px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 16px;
+  }
+
+  .view-all-link {
+    font-size: 13px;
+  }
+
+  .transaction-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .transaction-info {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .transaction-category {
+    font-size: 12px;
+  }
+
+  .transaction-description {
+    font-size: 12px;
+  }
+
+  .transaction-date {
+    font-size: 11px;
+  }
+
+  .transaction-amount {
+    font-size: 13px;
+  }
+
+  .budget-section {
+    margin-bottom: 20px;
+  }
+
+  .budgets-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .budget-card {
+    padding: 12px;
+  }
+
+  .budget-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .budget-category {
+    font-size: 14px;
+  }
+
+  .budget-status {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .budget-details {
+    font-size: 12px;
+    gap: 4px;
   }
 }

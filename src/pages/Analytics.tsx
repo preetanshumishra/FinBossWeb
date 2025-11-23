@@ -179,7 +179,7 @@ export const Analytics = () => {
             {/* Charts Grid */}
             <div className="charts-grid">
               {/* Income vs Expense */}
-              <div className="chart-card">
+              <div className="chart-card expense-breakdown-card">
                 <h3>Income vs Expenses</h3>
                 <ExpenseTypeBreakdown transactions={monthlyTrends} loading={false} />
               </div>

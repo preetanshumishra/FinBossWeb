@@ -208,6 +208,27 @@ src/
 └── main.tsx                # Entry point
 ```
 
+## Mobile Responsive Design
+
+The application features comprehensive mobile responsive design with optimized layouts for all screen sizes:
+
+### Responsive Breakpoints
+
+- **Desktop** (1024px+): Full-featured layout with side-by-side components
+- **Tablet** (768px - 1023px): Optimized single-column layout with proper spacing
+- **Mobile** (480px - 767px): Compact layout with touch-friendly controls
+- **Extra Small** (<480px): Minimal layout with truncated text and condensed spacing
+
+### Mobile Optimizations
+
+- **Touch Targets**: All interactive elements meet 44x44px minimum touch target size
+- **Responsive Typography**: Font sizes scale appropriately for readability
+- **Flexible Layouts**: Grid and flex layouts adapt to container width
+- **Navigation**: Hamburger menu collapses on mobile with smooth animations
+- **Forms**: Input fields expand to full width for better mobile usability
+- **Charts**: Dynamic chart sizing and legend repositioning for mobile views
+- **Budget Cards**: Consistent side-by-side layout of title and action buttons on all sizes
+
 ## Dark Mode
 
 The application includes a built-in dark mode feature that automatically respects user preferences and provides manual toggle control.

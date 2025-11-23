@@ -4,7 +4,7 @@
 }
 
 .btn-export {
-  padding: 10px 16px;
+  padding: 12px 16px;
   border: 1px solid var(--border-color);
   border-radius: 6px;
   background: var(--bg-primary);
@@ -13,9 +13,23 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-export:hover:not(:disabled) {
+.btn-export {
+  background: var(--bg-primary);
+}
+
+.btn-export:hover:not(:disabled):not(.active) {
+  background: #f0f4ff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.btn-export.active:not(:disabled) {
   background: #f0f4ff;
   border-color: var(--accent-primary);
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
@@ -69,19 +83,25 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .export-menu {
+    width: 100%;
+  }
+
   .btn-export {
     padding: 8px 12px;
     font-size: 12px;
+    width: 100%;
   }
 
   .export-dropdown {
-    position: fixed;
-    top: auto;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: auto;
+    left: auto;
     width: auto;
     min-width: unset;
+    margin-top: 4px;
   }
 
   .export-option {

@@ -10,6 +10,7 @@ interface ExportMenuProps {
 export const ExportMenu = ({ onExportCSV, onExportPDF, disabled = false }: ExportMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,9 +37,20 @@ export const ExportMenu = ({ onExportCSV, onExportPDF, disabled = false }: Expor
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    if (buttonRef.current) {
+      if (isOpen) {
+        buttonRef.current.classList.add('active');
+      } else {
+        buttonRef.current.classList.remove('active');
+      }
+    }
+  }, [isOpen]);
+
   return (
     <div className="export-menu" ref={menuRef}>
       <button
+        ref={buttonRef}
         className="btn-export"
         onClick={() => setIsOpen(!isOpen)}
         disabled={disabled}
