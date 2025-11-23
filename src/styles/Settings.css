@@ -12,7 +12,7 @@
 .settings-header {
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 2px solid #e9ecef;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .settings-header h1 {
@@ -145,14 +145,14 @@
 }
 
 .btn-secondary {
-  background-color: #f0f0f0;
+  background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: #e8e8e8;
-  border-color: #bbb;
+  background-color: var(--hover-bg);
+  border-color: var(--accent-primary);
 }
 
 .btn-secondary:disabled {
@@ -188,14 +188,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   border-radius: 6px;
   border: 1px solid var(--border-color);
   transition: background-color 0.3s ease;
 }
 
 .preference-item:hover {
-  background-color: #f0f1f3;
+  background-color: var(--hover-bg);
 }
 
 .preference-info h3 {
@@ -231,7 +231,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--border-color);
   transition: 0.3s;
   border-radius: 28px;
 }
@@ -243,7 +243,7 @@
   width: 20px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--bg-primary);
   transition: 0.3s;
   border-radius: 50%;
 }
@@ -268,23 +268,25 @@ input:checked + .toggle-slider:before {
   padding: 20px;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   transition: all 0.3s ease;
 }
 
 .action-card:hover {
   border-color: var(--accent-primary);
-  background-color: #f5f5ff;
+  background-color: var(--bg-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .action-card.danger {
-  border-color: #fecaca;
-  background-color: #fef2f2;
+  border-color: #ef4444;
+  background-color: var(--bg-primary);
 }
 
 .action-card.danger:hover {
   border-color: #ef4444;
-  background-color: #fef2f2;
+  background-color: var(--bg-secondary);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
 }
 
 .action-card h3 {

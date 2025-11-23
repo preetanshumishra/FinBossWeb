@@ -24,6 +24,7 @@ export const CategoryBreakdownChart = ({ data, loading }: CategoryBreakdownProps
 
   // Get the max amount for scaling
   const maxAmount = Math.max(...data.map((d) => d.amount));
+  const totalAmount = data.reduce((sum, d) => sum + d.amount, 0);
 
   return (
     <div className="category-breakdown-container">
@@ -45,7 +46,9 @@ export const CategoryBreakdownChart = ({ data, loading }: CategoryBreakdownProps
               ></div>
             </div>
             <div className="breakdown-meta">
-              <span className="percentage">{item.percentage.toFixed(1)}%</span>
+              <span className="percentage">
+                {totalAmount > 0 ? ((item.amount / totalAmount) * 100).toFixed(1) : 0}%
+              </span>
               <span className="count">{item.transactionCount} txns</span>
             </div>
           </div>

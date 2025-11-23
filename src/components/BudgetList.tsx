@@ -64,15 +64,15 @@ export const BudgetList = ({
             <div className="progress-bar-full">
               <div
                 className={`progress-fill-full ${budget.status}`}
-                style={{ width: `${Math.min(budget.percentageUsed, 100)}%` }}
+                style={{ width: `${Math.min(budget.budgetLimit > 0 ? (budget.spent / budget.budgetLimit) * 100 : 0, 100)}%` }}
               ></div>
             </div>
             <div className="progress-labels">
               <span className="progress-percentage">
-                {budget.percentageUsed.toFixed(1)}%
+                {budget.budgetLimit > 0 ? ((budget.spent / budget.budgetLimit) * 100).toFixed(1) : 0}%
               </span>
               <span className="progress-text">
-                {formatCurrency(budget.spent)} / {formatCurrency(budget.budgetLimit)}
+                {formatCurrency(budget.spent || 0)} / {formatCurrency(budget.budgetLimit || 0)}
               </span>
             </div>
           </div>
@@ -95,7 +95,7 @@ export const BudgetList = ({
             </div>
             <div className="detail-item">
               <span className="detail-label">Limit</span>
-              <span className="detail-value">{formatCurrency(budget.budgetLimit)}</span>
+              <span className="detail-value">{formatCurrency(budget.budgetLimit || 0)}</span>
             </div>
           </div>
         </div>

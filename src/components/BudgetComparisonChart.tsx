@@ -33,21 +33,23 @@ export const BudgetComparisonChart = ({ budgets }: BudgetComparisonChartProps) =
                 <div
                   className="bar comparison-bar limit-bar"
                   style={{
-                    height: `${(budget.budgetLimit / scaledMax) * 100}%`,
+                    height: `${((budget.budgetLimit || 0) / scaledMax) * 100}%`,
                   }}
-                  title={`Budget: $${budget.budgetLimit.toFixed(2)}`}
+                  title={`Budget: $${(budget.budgetLimit || 0).toFixed(2)}`}
                 ></div>
                 {/* Spent bar (foreground) */}
                 <div
                   className={`bar comparison-bar spent-bar ${budget.status}`}
                   style={{
-                    height: `${(budget.spent / scaledMax) * 100}%`,
+                    height: `${((budget.spent || 0) / scaledMax) * 100}%`,
                   }}
-                  title={`Spent: $${budget.spent.toFixed(2)}`}
+                  title={`Spent: $${(budget.spent || 0).toFixed(2)}`}
                 ></div>
               </div>
               <div className="bar-label">{budget.category}</div>
-              <div className="bar-percentage">{budget.percentageUsed.toFixed(0)}%</div>
+              <div className="bar-percentage">
+                {(budget.budgetLimit || 0) > 0 ? (((budget.spent || 0) / (budget.budgetLimit || 0)) * 100).toFixed(0) : 0}%
+              </div>
             </div>
           ))}
         </div>

@@ -94,9 +94,10 @@ export const Analytics = () => {
 
   const totalBudgetLimit = budgetStatus.reduce((sum, b) => sum + b.budgetLimit, 0);
   const totalBudgetSpent = budgetStatus.reduce((sum, b) => sum + b.spent, 0);
+  const totalCategorySpending = categoryBreakdown.reduce((sum, c) => sum + c.amount, 0);
   const avgCategorySpending =
     categoryBreakdown.length > 0
-      ? categoryBreakdown.reduce((sum, c) => sum + c.amount, 0) / categoryBreakdown.length
+      ? totalCategorySpending / categoryBreakdown.length
       : 0;
 
   return (
@@ -223,7 +224,9 @@ export const Analytics = () => {
                       <div className="col-rank">{idx + 1}</div>
                       <div className="col-category">{cat.category}</div>
                       <div className="col-amount">{formatCurrency(cat.amount)}</div>
-                      <div className="col-percentage">{cat.percentage.toFixed(1)}%</div>
+                      <div className="col-percentage">
+                        {totalCategorySpending > 0 ? ((cat.amount / totalCategorySpending) * 100).toFixed(1) : 0}%
+                      </div>
                       <div className="col-transactions">{cat.transactionCount}</div>
                     </div>
                   ))}

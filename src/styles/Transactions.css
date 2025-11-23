@@ -96,6 +96,8 @@
   font-size: 14px;
   font-family: inherit;
   transition: border-color 0.2s;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .form-input:focus,
@@ -264,11 +266,44 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  table-layout: fixed;
+}
+
+.transactions-table th:nth-child(1),
+.transactions-table td:nth-child(1) {
+  width: 120px;
+}
+
+.transactions-table th:nth-child(2),
+.transactions-table td:nth-child(2) {
+  width: 200px;
+}
+
+.transactions-table th:nth-child(3),
+.transactions-table td:nth-child(3) {
+  width: 120px;
+}
+
+.transactions-table th:nth-child(4),
+.transactions-table td:nth-child(4) {
+  width: 100px;
+  text-align: center;
+}
+
+.transactions-table th:nth-child(5),
+.transactions-table td:nth-child(5) {
+  width: 120px;
+  text-align: right;
+}
+
+.transactions-table th:nth-child(6),
+.transactions-table td:nth-child(6) {
+  width: 100px;
+  text-align: center;
 }
 
 .transactions-table thead {
-  background: #f5f7ff;
-  border-bottom: 2px solid #e8eef7;
+  background: var(--bg-secondary);
 }
 
 .transactions-table th {
@@ -276,11 +311,24 @@
   text-align: left;
   font-weight: 600;
   color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  height: 56px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.transactions-table th:last-child {
+  border-right: none;
 }
 
 .transactions-table td {
   padding: 16px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
+  height: 56px;
+  vertical-align: middle;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 .transactions-table tbody tr:last-child td {
@@ -288,7 +336,7 @@
 }
 
 .transaction-row:hover {
-  background: #f9f9f9;
+  background: var(--hover-bg);
 }
 
 .transaction-row.income {
@@ -305,6 +353,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  height: 100%;
 }
 
 .recurring-badge {
@@ -335,13 +384,13 @@
 }
 
 .type-badge.income {
-  background: #e8f8f5;
-  color: #27ae60;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
 }
 
 .type-badge.expense {
-  background: #fee;
-  color: #e74c3c;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
 }
 
 .amount-cell {
@@ -359,11 +408,12 @@
 }
 
 .actions-cell {
-  text-align: center;
   display: flex;
   gap: 8px;
   justify-content: center;
-  white-space: nowrap;
+  align-items: center;
+  height: 56px;
+  padding: 16px;
 }
 
 /* Empty State */
