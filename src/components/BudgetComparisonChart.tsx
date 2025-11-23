@@ -10,10 +10,10 @@ export const BudgetComparisonChart = ({ budgets }: BudgetComparisonChartProps) =
   }
 
   // Sort by spent amount (descending) to show highest spenders first
-  const sortedBudgets = [...budgets].sort((a, b) => b.spent - a.spent);
+  const sortedBudgets = [...budgets].sort((a, b) => (b.spent || 0) - (a.spent || 0));
 
   // Find max budget limit for scaling
-  const maxLimit = Math.max(...sortedBudgets.map((b) => b.budgetLimit));
+  const maxLimit = Math.max(...sortedBudgets.map((b) => b.budgetLimit || 0));
   const padding = maxLimit * 0.1;
   const scaledMax = maxLimit + padding;
 

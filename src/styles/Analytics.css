@@ -249,11 +249,11 @@
 .bar-label {
   font-size: 12px;
   color: var(--text-secondary);
-  white-space: nowrap;
+  white-space: normal;
   text-align: center;
-  width: 70px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 80px;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .bar-percentage {

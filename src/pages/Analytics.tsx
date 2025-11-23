@@ -248,22 +248,22 @@ export const Analytics = () => {
                       <div className="budget-progress-bar">
                         <div
                           className={`budget-progress-fill ${budget.status}`}
-                          style={{ width: `${Math.min(budget.percentageUsed, 100)}%` }}
+                          style={{ width: `${Math.min((budget.budgetLimit && budget.spent) ? (budget.spent / budget.budgetLimit) * 100 : 0, 100)}%` }}
                         ></div>
                       </div>
                       <div className="budget-summary-details">
                         <div className="detail">
                           <span className="detail-label">Spent</span>
-                          <span className="detail-value">{formatCurrency(budget.spent)}</span>
+                          <span className="detail-value">{formatCurrency(budget.spent || 0)}</span>
                         </div>
                         <div className="detail">
                           <span className="detail-label">Limit</span>
-                          <span className="detail-value">{formatCurrency(budget.budgetLimit)}</span>
+                          <span className="detail-value">{formatCurrency(budget.budgetLimit || 0)}</span>
                         </div>
                         <div className="detail">
                           <span className="detail-label">Remaining</span>
-                          <span className={`detail-value ${budget.remaining >= 0 ? 'positive' : 'negative'}`}>
-                            {formatCurrency(budget.remaining)}
+                          <span className={`detail-value ${(budget.remaining || 0) >= 0 ? 'positive' : 'negative'}`}>
+                            {formatCurrency(budget.remaining || 0)}
                           </span>
                         </div>
                       </div>

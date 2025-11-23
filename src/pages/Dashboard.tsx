@@ -212,16 +212,16 @@ export const Dashboard = () => {
                         <div className="progress-bar">
                           <div
                             className={`progress-fill ${budget.status}`}
-                            style={{ width: `${Math.min(budget.percentageUsed, 100)}%` }}
+                            style={{ width: `${Math.min((budget.budgetLimit && budget.spent) ? (budget.spent / budget.budgetLimit) * 100 : 0, 100)}%` }}
                           ></div>
                         </div>
                       </div>
                       <div className="budget-details">
                         <span>
-                          {formatCurrency(budget.spent)} / {formatCurrency(budget.budgetLimit)}
+                          {formatCurrency(budget.spent || 0)} / {formatCurrency(budget.budgetLimit || 0)}
                         </span>
                         <span className="budget-remaining">
-                          {budget.remaining >= 0 ? '✓' : '✗'} {formatCurrency(Math.abs(budget.remaining))}
+                          {(budget.remaining || 0) >= 0 ? '✓' : '✗'} {formatCurrency(Math.abs(budget.remaining || 0))}
                         </span>
                       </div>
                     </div>

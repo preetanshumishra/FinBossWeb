@@ -244,6 +244,11 @@
   cursor: pointer;
   padding: 4px 8px;
   transition: transform 0.2s;
+  line-height: 1;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-icon:hover {
@@ -260,6 +265,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
 }
 
 .transactions-table {
@@ -271,7 +277,7 @@
 
 .transactions-table th:nth-child(1),
 .transactions-table td:nth-child(1) {
-  width: 120px;
+  width: 160px;
 }
 
 .transactions-table th:nth-child(2),
@@ -281,24 +287,24 @@
 
 .transactions-table th:nth-child(3),
 .transactions-table td:nth-child(3) {
-  width: 120px;
+  width: 160px;
 }
 
 .transactions-table th:nth-child(4),
 .transactions-table td:nth-child(4) {
-  width: 100px;
+  width: 130px;
   text-align: center;
 }
 
 .transactions-table th:nth-child(5),
 .transactions-table td:nth-child(5) {
-  width: 120px;
+  width: 150px;
   text-align: right;
 }
 
 .transactions-table th:nth-child(6),
 .transactions-table td:nth-child(6) {
-  width: 100px;
+  width: 120px;
   text-align: center;
 }
 
@@ -316,6 +322,7 @@
   height: 56px;
   vertical-align: middle;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .transactions-table th:last-child {
@@ -324,11 +331,16 @@
 
 .transactions-table td {
   padding: 16px;
+  border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   height: 56px;
   vertical-align: middle;
-  overflow: visible;
   box-sizing: border-box;
+  overflow: visible;
+}
+
+.transactions-table td:last-child {
+  border-right: none;
 }
 
 .transactions-table tbody tr:last-child td {
@@ -347,40 +359,46 @@
   /* subtle highlight */
 }
 
+/* Date Column */
 .date-cell {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 100%;
 }
 
 .recurring-badge {
   font-size: 14px;
   cursor: help;
   opacity: 0.7;
+  flex-shrink: 0;
 }
 
+/* Description Column */
 .description-cell {
   color: var(--text-primary);
   font-weight: 500;
+  word-break: break-word;
+  line-height: 1.4;
 }
 
+/* Category Column */
 .category-cell {
   color: var(--text-secondary);
+  text-transform: capitalize;
+  font-size: 13px;
 }
 
+/* Type Column */
 .type-cell {
   text-align: center;
 }
 
 .type-badge {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .type-badge.income {
@@ -393,27 +411,24 @@
   color: #ef4444;
 }
 
+/* Amount Column */
 .amount-cell {
   text-align: right;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .amount-cell.income {
-  color: #27ae60;
+  color: #10b981;
 }
 
 .amount-cell.expense {
-  color: #e74c3c;
+  color: #ef4444;
 }
 
+/* Actions Column */
 .actions-cell {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  height: 56px;
-  padding: 16px;
+  text-align: center;
 }
 
 /* Empty State */
