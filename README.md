@@ -11,6 +11,7 @@ A modern personal finance management application built with React, TypeScript, a
 - **Budget Planning**: Create and monitor spending budgets with alerts
 - **Advanced Analytics**: View spending trends, forecasts, and budget comparisons
 - **Data Export**: Export financial data as JSON
+- **Dark Mode**: Toggle between light and dark themes with system preference detection
 - **Responsive Design**: Mobile-friendly interface with Tailwind CSS
 - **Real-time Sync**: Automatic synchronization with backend API
 
@@ -131,7 +132,8 @@ src/
 │   │   ├── Header.tsx       # Navigation header
 │   │   ├── Sidebar.tsx      # Side navigation
 │   │   ├── Toast.tsx        # Toast notifications
-│   │   └── Modal.tsx        # Modal dialogs
+│   │   ├── Modal.tsx        # Modal dialogs
+│   │   └── ThemeToggle.tsx  # Dark mode toggle button
 │   ├── auth/                # Authentication components
 │   │   ├── LoginForm.tsx    # Login form
 │   │   └── RegisterForm.tsx # Registration form
@@ -158,6 +160,10 @@ src/
 │       ├── ProfileSection.tsx
 │       ├── PreferencesSection.tsx
 │       └── AccountManagement.tsx
+├── context/
+│   └── ThemeContext.tsx     # Dark mode theme provider
+├── hooks/
+│   └── useTheme.ts          # Hook for accessing theme context
 ├── pages/
 │   ├── Dashboard.tsx        # Main dashboard
 │   ├── Transactions.tsx     # Transactions page
@@ -187,8 +193,12 @@ src/
 │   └── category.ts         # Category types
 ├── styles/
 │   ├── App.css             # Global styles
-│   ├── variables.css       # CSS variables
-│   └── tailwind.css        # Tailwind imports
+│   ├── index.css           # Base styles with CSS variables
+│   ├── theme.css           # Light/dark theme CSS variables
+│   ├── Navbar.css          # Navbar styles
+│   ├── Dashboard.css       # Dashboard styles
+│   ├── ThemeToggle.css     # Theme toggle button styles
+│   └── [other-pages].css   # Page-specific styles
 ├── utils/
 │   ├── formatters.ts       # Formatting utilities
 │   ├── validators.ts       # Validation utilities
@@ -196,6 +206,69 @@ src/
 ├── App.tsx                 # Root component
 ├── App.test.tsx            # App tests
 └── main.tsx                # Entry point
+```
+
+## Dark Mode
+
+The application includes a built-in dark mode feature that automatically respects user preferences and provides manual toggle control.
+
+### Features
+
+- **Theme Toggle**: Click the theme button (🌙/☀️) in the navbar to switch between light and dark themes
+- **System Preference Detection**: Automatically detects system dark mode preference on first visit
+- **Persistent Preference**: Theme choice is saved to localStorage and persists across sessions
+- **CSS Variable System**: All colors use CSS custom properties for consistent theming
+- **Smooth Transitions**: Theme changes are applied with smooth CSS transitions
+
+### Theme Architecture
+
+The dark mode is implemented using:
+
+- **ThemeContext** (`src/context/ThemeContext.tsx`) - Global theme state management with React Context
+- **useTheme Hook** (`src/hooks/useTheme.ts`) - Custom hook for accessing theme in components
+- **CSS Variables** (`src/styles/theme.css`) - Comprehensive color system for light and dark themes
+
+### CSS Variables
+
+All theme colors are defined as CSS custom properties:
+
+```css
+/* Light Theme (Default) */
+:root.light-theme {
+  --bg-primary: white;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-tertiary: #999;
+  /* ... more variables */
+}
+
+/* Dark Theme */
+:root.dark-theme {
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  /* ... more variables */
+}
+```
+
+### Extending Dark Mode
+
+To add dark mode support to new components:
+
+1. Use CSS variables for all colors
+2. Define colors in `src/styles/theme.css`
+3. Reference variables in component stylesheets
+
+Example:
+```css
+.my-component {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
 ```
 
 ## Scripts
