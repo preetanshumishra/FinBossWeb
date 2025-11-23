@@ -39,6 +39,9 @@ export interface Transaction {
   category: string;
   description: string;
   date: string;
+  isRecurring?: boolean;
+  recurringPattern?: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  nextRecurrenceDate?: string;
   createdAt: string;
 }
 
@@ -48,6 +51,8 @@ export interface TransactionRequest {
   category: string;
   description: string;
   date: string;
+  isRecurring?: boolean;
+  recurringPattern?: 'daily' | 'weekly' | 'monthly' | 'yearly';
 }
 
 export interface TransactionSummary {

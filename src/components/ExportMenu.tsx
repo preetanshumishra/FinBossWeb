@@ -1,0 +1,54 @@
+import { useState } from 'react';
+import '../styles/ExportMenu.css';
+
+interface ExportMenuProps {
+  onExportCSV: () => void;
+  onExportPDF: () => void;
+  disabled?: boolean;
+}
+
+export const ExportMenu = ({ onExportCSV, onExportPDF, disabled = false }: ExportMenuProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleExportCSV = () => {
+    onExportCSV();
+    setIsOpen(false);
+  };
+
+  const handleExportPDF = () => {
+    onExportPDF();
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="export-menu">
+      <button
+        className="btn-export"
+        onClick={() => setIsOpen(!isOpen)}
+        disabled={disabled}
+        title="Export data"
+      >
+        ⬇️ Export
+      </button>
+
+      {isOpen && (
+        <div className="export-dropdown">
+          <button
+            className="export-option"
+            onClick={handleExportCSV}
+            disabled={disabled}
+          >
+            📄 Export as CSV
+          </button>
+          <button
+            className="export-option"
+            onClick={handleExportPDF}
+            disabled={disabled}
+          >
+            📋 Export as PDF
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};

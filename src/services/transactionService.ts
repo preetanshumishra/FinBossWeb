@@ -6,14 +6,43 @@ import type {
   CategoryBreakdown,
 } from '../types';
 
+export interface PaginationInfo {
+  total: number;
+  page: number;
+  limit: number;
+  pages: number;
+}
+
+export interface PaginatedTransactions {
+  transactions: Transaction[];
+  pagination: PaginationInfo;
+}
+
+export interface TransactionTrend {
+  date: string;
+  income: number;
+  expense: number;
+  balance: number;
+}
+
+export interface SpendingForecast {
+  historical_average: number;
+  projected_spending: number;
+  confidence: number;
+  months: number;
+}
+
 export const transactionService = {
   getAll: async (filters?: {
     type?: 'income' | 'expense';
     category?: string;
     startDate?: string;
     endDate?: string;
-  }): Promise<Transaction[]> => {
-    const response = await api.get<Transaction[]>('/transactions', { params: filters });
+    search?: string;
+    page?: number;
+    limit?: number;
+  }): Promise<PaginatedTransactions> => {
+    const response = await api.get<PaginatedTransactions>('/transactions', { params: filters });
     return response.data;
   },
 
@@ -49,5 +78,29 @@ export const transactionService = {
       { params: filters }
     );
     return response.data;
+  },
+
+  getTrends: async (filters?: {
+    startDate?: string;
+    endDate?: string;
+    groupBy?: 'day' | 'week' | 'month';
+    type?: 'income' | 'expense';
+  }): Promise<TransactionTrend[]> => {
+    const response = await api.get<{ status: string; data: TransactionTrend[] }>(
+      '/transactions/trends',
+      { params: filters }
+    );
+    return response.data.data;
+  },
+
+  getForecast: async (filters?: {
+    months?: number;
+    category?: string;
+  }): Promise<SpendingForecast> => {
+    const response = await api.get<{ status: string; data: SpendingForecast }>(
+      '/transactions/forecast',
+      { params: filters }
+    );
+    return response.data.data;
   },
 };

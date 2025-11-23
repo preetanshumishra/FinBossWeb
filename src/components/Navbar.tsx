@@ -57,6 +57,9 @@ export const Navbar = () => {
                 <span className="user-email">{user?.email}</span>
               </div>
             </div>
+            <Link to="/settings" className="nav-link settings-link" onClick={() => setIsMenuOpen(false)}>
+              Settings
+            </Link>
             <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>

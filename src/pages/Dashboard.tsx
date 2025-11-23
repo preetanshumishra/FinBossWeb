@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { transactionService } from '../services/transactionService';
 import { budgetService } from '../services/budgetService';
-import type { Transaction, TransactionSummary, BudgetStatus } from '../types';
+import { CategoryBreakdownChart } from '../components/CategoryBreakdown';
+import { ExpenseTypeBreakdown } from '../components/ExpenseTypeBreakdown';
+import type { Transaction, TransactionSummary, BudgetStatus, CategoryBreakdown } from '../types';
 import '../styles/Dashboard.css';
 
 export const Dashboard = () => {
   const [summary, setSummary] = useState<TransactionSummary | null>(null);
   const [recentTransactions, setRecentTransactions] = useState<Transaction[]>([]);
   const [budgetStatus, setBudgetStatus] = useState<BudgetStatus[]>([]);
+  const [categoryBreakdown, setCategoryBreakdown] = useState<CategoryBreakdown[]>([]);
   const [loading, setLoading] = useState(true);
+  const [chartLoading, setChartLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -22,9 +26,9 @@ export const Dashboard = () => {
         const summaryData = await transactionService.getSummary();
         setSummary(summaryData);
 
-        // Fetch recent transactions
-        const transactions = await transactionService.getAll({ type: undefined });
-        setRecentTransactions(transactions.slice(0, 5));
+        // Fetch recent transactions (limit to 5 by using limit parameter)
+        const { transactions } = await transactionService.getAll({ type: undefined, limit: 5 });
+        setRecentTransactions(transactions);
 
         // Fetch budget status
         const budgets = await budgetService.getOverview();
@@ -37,6 +41,24 @@ export const Dashboard = () => {
     };
 
     fetchDashboardData();
+  }, []);
+
+  // Fetch category breakdown separately with its own loading state
+  useEffect(() => {
+    const fetchCategoryBreakdown = async () => {
+      try {
+        setChartLoading(true);
+        const breakdown = await transactionService.getByCategory();
+        setCategoryBreakdown(breakdown);
+      } catch (err) {
+        // Silent fail for chart, don't interrupt main dashboard
+        console.error('Failed to load category breakdown:', err);
+      } finally {
+        setChartLoading(false);
+      }
+    };
+
+    fetchCategoryBreakdown();
   }, []);
 
   const formatCurrency = (amount: number) => {
@@ -105,6 +127,31 @@ export const Dashboard = () => {
                     </span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Analytics Section */}
+            <div className="analytics-section">
+              <div className="analytics-grid">
+                {/* Expense Type Breakdown */}
+                <div className="analytics-card">
+                  <div className="card-title">Income vs Expense</div>
+                  <ExpenseTypeBreakdown
+                    transactions={recentTransactions}
+                    loading={loading}
+                  />
+                </div>
+
+                {/* Category Breakdown */}
+                {categoryBreakdown.length > 0 && (
+                  <div className="analytics-card">
+                    <div className="card-title">Spending by Category</div>
+                    <CategoryBreakdownChart
+                      data={categoryBreakdown}
+                      loading={chartLoading}
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

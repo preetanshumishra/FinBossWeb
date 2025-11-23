@@ -122,6 +122,18 @@
   font-size: 12px;
 }
 
+.settings-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.settings-link:hover {
+  color: white;
+}
+
 .logout-btn {
   background: rgba(255, 255, 255, 0.2);
   color: white;
@@ -242,6 +254,12 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-right: 0;
     padding-bottom: 15px;
+  }
+
+  .settings-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
   }
 
   .logout-btn {
