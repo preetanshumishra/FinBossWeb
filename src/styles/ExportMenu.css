@@ -5,10 +5,10 @@
 
 .btn-export {
   padding: 10px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  background: white;
-  color: #667eea;
+  background: var(--bg-primary);
+  color: var(--accent-primary);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -17,7 +17,7 @@
 
 .btn-export:hover:not(:disabled) {
   background: #f0f4ff;
-  border-color: #667eea;
+  border-color: var(--accent-primary);
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
@@ -30,8 +30,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 100;
@@ -44,8 +44,8 @@
   width: 100%;
   padding: 12px 16px;
   border: none;
-  background: white;
-  color: #333;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
   text-align: left;
@@ -54,8 +54,8 @@
 }
 
 .export-option:hover:not(:disabled) {
-  background: #f5f5f5;
-  color: #667eea;
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
 }
 
 .export-option:disabled {

@@ -1,10 +1,18 @@
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+:root.light-theme .navbar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+:root.dark-theme .navbar {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar-container {
@@ -219,7 +227,6 @@
     top: 60px;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     flex-direction: column;
     gap: 0;
     margin-left: 0;
@@ -227,6 +234,14 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s;
+  }
+
+  :root.light-theme .navbar-menu {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  :root.dark-theme .navbar-menu {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
   }
 
   .navbar-menu.open {

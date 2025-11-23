@@ -9,12 +9,22 @@
     Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #333;
-  background-color: #fff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Theme default (light) */
+:root {
+  color-scheme: light;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* Dark theme */
+:root.dark-theme {
+  color-scheme: dark;
 }
 
 html,

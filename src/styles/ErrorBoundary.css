@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 20px;
 }
 
 .error-boundary-content {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   padding: 40px;
   max-width: 600px;
@@ -24,11 +24,11 @@
 .error-boundary-content h1 {
   margin: 0 0 16px 0;
   font-size: 28px;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .error-message {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 16px;
   margin: 0 0 30px 0;
   line-height: 1.5;
@@ -55,7 +55,7 @@
 }
 
 .btn-primary {
-  background: #667eea;
+  background: var(--accent-primary);
   color: white;
 }
 
@@ -66,7 +66,7 @@
 
 .btn-secondary {
   background: #e8eef7;
-  color: #667eea;
+  color: var(--accent-primary);
 }
 
 .btn-secondary:hover {
@@ -76,14 +76,14 @@
 .error-details {
   margin-top: 20px;
   text-align: left;
-  background: #f5f5f5;
+  background: var(--bg-tertiary);
   padding: 12px;
   border-radius: 6px;
 }
 
 .error-details summary {
   cursor: pointer;
-  color: #667eea;
+  color: var(--accent-primary);
   font-weight: 600;
   padding: 8px;
 }

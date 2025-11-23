@@ -1,0 +1,112 @@
+/* Light Theme (Default) */
+:root.light-theme {
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+
+  /* Text Colors */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+
+  /* Border Colors */
+  --border-color: #dee2e6;
+  --border-light: #e9ecef;
+
+  /* Component Colors */
+  --navbar-bg: #ffffff;
+  --navbar-text: #212529;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --input-bg: #ffffff;
+  --input-border: #dee2e6;
+  --input-text: #212529;
+
+  /* Accent Colors */
+  --accent-primary: #4f46e5;
+  --accent-secondary: #10b981;
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+  --accent-info: #3b82f6;
+
+  /* Status Colors */
+  --status-success: #10b981;
+  --status-error: #ef4444;
+  --status-warning: #f59e0b;
+  --status-info: #3b82f6;
+
+  /* Chart Colors */
+  --chart-income: #10b981;
+  --chart-expense: #ef4444;
+  --chart-neutral: #6b7280;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Hover States */
+  --hover-bg: #f3f4f6;
+  --hover-border: #d1d5db;
+}
+
+/* Dark Theme */
+:root.dark-theme {
+  /* Background Colors */
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --bg-tertiary: #0f1419;
+
+  /* Text Colors */
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+
+  /* Border Colors */
+  --border-color: #374151;
+  --border-light: #2d3748;
+
+  /* Component Colors */
+  --navbar-bg: #111827;
+  --navbar-text: #f3f4f6;
+  --card-bg: #1f2937;
+  --card-border: #374151;
+  --input-bg: #111827;
+  --input-border: #374151;
+  --input-text: #f3f4f6;
+
+  /* Accent Colors */
+  --accent-primary: #818cf8;
+  --accent-secondary: #34d399;
+  --accent-danger: #f87171;
+  --accent-warning: #fbbf24;
+  --accent-info: #60a5fa;
+
+  /* Status Colors */
+  --status-success: #34d399;
+  --status-error: #f87171;
+  --status-warning: #fbbf24;
+  --status-info: #60a5fa;
+
+  /* Chart Colors */
+  --chart-income: #34d399;
+  --chart-expense: #f87171;
+  --chart-neutral: #9ca3af;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+  /* Hover States */
+  --hover-bg: #2d3748;
+  --hover-border: #4b5563;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

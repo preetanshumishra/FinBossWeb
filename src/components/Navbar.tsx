@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
+import { ThemeToggle } from './ThemeToggle';
 import '../styles/Navbar.css';
 
 export const Navbar = () => {
@@ -46,6 +47,7 @@ export const Navbar = () => {
           </div>
 
           <div className="navbar-user">
+            <ThemeToggle />
             <div className="user-info">
               <div className="user-avatar">
                 {user?.firstName?.[0]?.toUpperCase()}
