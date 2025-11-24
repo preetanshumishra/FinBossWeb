@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 // Polyfill TextEncoder for tests (for react-router compatibility)
 // This is needed for react-router v6 in Jest/jsdom environment
 if (typeof globalThis.TextEncoder === 'undefined') {
-  (globalThis as any).TextEncoder = class TextEncoder {
+  class TextEncoder {
     encode(input: string) {
       const uint8 = new Uint8Array(input.length);
       for (let i = 0; i < input.length; i++) {
@@ -11,13 +11,14 @@ if (typeof globalThis.TextEncoder === 'undefined') {
       }
       return uint8;
     }
-  };
+  }
+  (globalThis as unknown as Record<string, unknown>).TextEncoder = TextEncoder;
 }
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: jest.fn().mockImplementation((query: string) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -32,11 +33,11 @@ Object.defineProperty(window, 'matchMedia', {
 // Mock IntersectionObserver
 declare global {
   interface Global {
-    IntersectionObserver: any;
+    IntersectionObserver: typeof IntersectionObserver;
   }
 }
 
-(globalThis as any).IntersectionObserver = class IntersectionObserver {
+class IntersectionObserverMock {
   constructor() {}
   disconnect() {}
   observe() {}
@@ -44,4 +45,5 @@ declare global {
     return [];
   }
   unobserve() {}
-} as any;
+}
+(globalThis as unknown as Record<string, unknown>).IntersectionObserver = IntersectionObserverMock;

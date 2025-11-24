@@ -38,7 +38,7 @@ export const Login = () => {
     try {
       await login(formData);
       navigate('/dashboard');
-    } catch (err) {
+    } catch {
       // Error is handled and set in the store
     }
   };

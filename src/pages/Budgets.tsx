@@ -129,7 +129,7 @@ export const Budgets = () => {
         type: 'success',
         message: 'Budgets exported to CSV successfully',
       });
-    } catch (err) {
+    } catch {
       addToast({
         type: 'error',
         message: 'Failed to export budgets to CSV',
@@ -144,7 +144,7 @@ export const Budgets = () => {
         type: 'success',
         message: 'Opening print dialog for PDF export',
       });
-    } catch (err) {
+    } catch {
       addToast({
         type: 'error',
         message: 'Failed to export budgets to PDF',

@@ -61,6 +61,7 @@ export const Transactions = () => {
 
   useEffect(() => {
     fetchTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, currentPage, pageSize]);
 
   const handleAdd = () => {
@@ -149,7 +150,7 @@ export const Transactions = () => {
         type: 'success',
         message: 'Transactions exported to CSV successfully',
       });
-    } catch (err) {
+    } catch {
       addToast({
         type: 'error',
         message: 'Failed to export transactions to CSV',
@@ -164,7 +165,7 @@ export const Transactions = () => {
         type: 'success',
         message: 'Opening print dialog for PDF export',
       });
-    } catch (err) {
+    } catch {
       addToast({
         type: 'error',
         message: 'Failed to export transactions to PDF',

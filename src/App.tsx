@@ -10,15 +10,11 @@ import { Transactions } from './pages/Transactions';
 import { Budgets } from './pages/Budgets';
 import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
-  const { user, accessToken } = useAuthStore();
+  const { accessToken, user } = useAuthStore();
   const { messages, removeToast } = useToastStore();
-
-  // Protected route wrapper
-  const ProtectedRoute = ({ element }: { element: React.ReactNode }) => {
-    return accessToken && user ? element : <Navigate to="/login" replace />;
-  };
 
   return (
     <ErrorBoundary>

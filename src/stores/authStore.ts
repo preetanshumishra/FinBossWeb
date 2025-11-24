@@ -45,10 +45,11 @@ export const useAuthStore = create<AuthState>()(
           });
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
-        } catch (error: any) {
+        } catch (error: unknown) {
           let errorMessage = 'Login failed. Please try again.';
-          const status = error?.response?.status;
-          const message = error?.response?.data?.message || error?.message;
+          const err = error as Record<string, unknown>;
+          const status = (err?.response as Record<string, unknown>)?.status;
+          const message = (((err?.response as Record<string, unknown>)?.data as Record<string, unknown>)?.message || (error as Error)?.message) as string;
 
           // Handle specific error status codes
           if (status === 401 || status === 403) {
@@ -63,7 +64,7 @@ export const useAuthStore = create<AuthState>()(
             errorMessage = 'Service unavailable. Please try again later.';
           } else if (message && !message.includes('status code')) {
             errorMessage = message;
-          } else if (error?.message?.includes('Network')) {
+          } else if ((error as Error)?.message?.includes('Network')) {
             errorMessage = 'Network error. Please check your internet connection.';
           } else if (!status) {
             errorMessage = 'Unable to connect to server. Check your internet connection.';
@@ -94,10 +95,11 @@ export const useAuthStore = create<AuthState>()(
           });
           localStorage.setItem('accessToken', response.accessToken);
           localStorage.setItem('refreshToken', response.refreshToken);
-        } catch (error: any) {
+        } catch (error: unknown) {
           let errorMessage = 'Registration failed. Please try again.';
-          const status = error?.response?.status;
-          const message = error?.response?.data?.message || error?.message;
+          const err = error as Record<string, unknown>;
+          const status = (err?.response as Record<string, unknown>)?.status;
+          const message = (((err?.response as Record<string, unknown>)?.data as Record<string, unknown>)?.message || (error as Error)?.message) as string;
 
           // Handle specific error status codes
           if (status === 409) {
@@ -112,7 +114,7 @@ export const useAuthStore = create<AuthState>()(
             errorMessage = 'Service unavailable. Please try again later.';
           } else if (message && !message.includes('status code')) {
             errorMessage = message;
-          } else if (error?.message?.includes('Network')) {
+          } else if ((error as Error)?.message?.includes('Network')) {
             errorMessage = 'Network error. Please check your internet connection.';
           } else if (!status) {
             errorMessage = 'Unable to connect to server. Check your internet connection.';

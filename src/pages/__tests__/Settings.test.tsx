@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import * as authStore from '../../stores/authStore';
 import * as toastStore from '../../stores/toastStore';
 import { authService } from '../../services/authService';
+import { ThemeProvider } from '../../context/ThemeProvider';
 
 // Mock the services and stores BEFORE importing the component
 jest.mock('../../services/authService');
@@ -30,7 +31,9 @@ const mockUser = {
 const renderSettings = () => {
   return render(
     <Router>
-      <Settings />
+      <ThemeProvider>
+        <Settings />
+      </ThemeProvider>
     </Router>
   );
 };
@@ -50,7 +53,7 @@ describe('Settings Page', () => {
       setUser: jest.fn(),
       setTokens: jest.fn(),
       clearError: jest.fn(),
-    } as any);
+    } as unknown as ReturnType<typeof authStore.useAuthStore>);
 
     // Mock toast store
     jest.spyOn(toastStore, 'useToastStore').mockReturnValue({
@@ -58,7 +61,7 @@ describe('Settings Page', () => {
       addToast: jest.fn(),
       removeToast: jest.fn(),
       clearAll: jest.fn(),
-    } as any);
+    } as unknown as ReturnType<typeof toastStore.useToastStore>);
 
     // Mock auth service methods
     (authService.getPreferences as jest.Mock).mockResolvedValue({
@@ -270,14 +273,14 @@ describe('Settings Page', () => {
         setUser: mockSetUser,
         setTokens: jest.fn(),
         clearError: jest.fn(),
-      } as any);
+      } as unknown as ReturnType<typeof authStore.useAuthStore>);
 
       jest.spyOn(toastStore, 'useToastStore').mockReturnValue({
         messages: [],
         addToast: mockAddToast,
         removeToast: jest.fn(),
         clearAll: jest.fn(),
-      } as any);
+      } as unknown as ReturnType<typeof toastStore.useToastStore>);
 
       (authService.updateProfile as jest.Mock).mockResolvedValue(mockUser);
 
@@ -299,7 +302,7 @@ describe('Settings Page', () => {
         addToast: mockAddToast,
         removeToast: jest.fn(),
         clearAll: jest.fn(),
-      } as any);
+      } as unknown as ReturnType<typeof toastStore.useToastStore>);
 
       (authService.updateProfile as jest.Mock).mockRejectedValue(
         new Error('Update failed')

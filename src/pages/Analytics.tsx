@@ -60,6 +60,7 @@ export const Analytics = () => {
 
   useEffect(() => {
     fetchAnalyticsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange]);
 
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
