@@ -476,6 +476,15 @@ npm run dev -- --port 5174
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## FinBoss Ecosystem
+
+This project is part of the FinBoss financial management ecosystem:
+
+- **[FinBossAPI](https://github.com/preetanshumishra/FinBossAPI)** - Node.js/Express backend API with MongoDB
+- **[FinBossMobile](https://github.com/preetanshumishra/FinBossMobile)** - React Native mobile app (iOS/Android via Expo)
+- **[FinBossAndroid](https://github.com/preetanshumishra/FinBossAndroid)** - Native Android app (Kotlin + Jetpack Compose)
+- **[FinBossiOS](https://github.com/preetanshumishra/FinBossiOS)** - Native iOS app (Swift + SwiftUI)
+
 ## License
 
 This project is private and proprietary.
