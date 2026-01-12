@@ -49,7 +49,7 @@ npm install
 
 3. Create a `.env` file in the root directory:
 ```env
-VITE_API_BASE_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:5000
 ```
 
 ### Development
@@ -79,10 +79,10 @@ npm run preview
 
 The application communicates with the FinBoss API backend:
 
-- **Base URL**: `http://localhost:3000/api/v1`
+- **Base URL**: `http://localhost:5000/api/v1`
 - **Authentication**: Bearer token in Authorization header
-- **Health Check**: `http://localhost:3000/health`
-- **API Docs**: `http://localhost:3000/api-docs`
+- **Health Check**: `http://localhost:5000/health`
+- **API Docs**: `http://localhost:5000/api-docs`
 
 ### Auth Routes
 - `POST /auth/register` - Register new user
@@ -436,12 +436,12 @@ If you see errors connecting to the API:
 
 1. **Verify API is running**: Check `VITE_API_BASE_URL` is accessible
    ```bash
-   curl http://localhost:3000/health
+   curl http://localhost:5000/health
    ```
 
 2. **Check environment variables**: Ensure `.env` has correct base URL
    ```env
-   VITE_API_BASE_URL=http://localhost:3000
+   VITE_API_BASE_URL=http://localhost:5000
    ```
 
 3. **Verify authentication**: JWT tokens should be stored in localStorage
