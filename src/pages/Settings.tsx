@@ -241,7 +241,7 @@ export const Settings = () => {
     setDeleteLoading(true);
     try {
       await authService.deleteAccount();
-      logout();
+      await logout();
       addToast({ message: 'Account deleted successfully', type: 'success' });
       navigate('/login');
     } catch (error) {

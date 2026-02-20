@@ -64,9 +64,17 @@ export const authService = {
     return response.data.data;
   },
 
-  logout: (): void => {
+  logout: async (): Promise<void> => {
+    const refreshToken = localStorage.getItem('refreshToken');
+    // Invalidate refresh token on the server (best-effort, don't block on failure)
+    if (refreshToken) {
+      try {
+        await api.post('/auth/logout', { refreshToken });
+      } catch {
+        // Server-side invalidation is best-effort — proceed with local cleanup
+      }
+    }
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('user');
   },
 };

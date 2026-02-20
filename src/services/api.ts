@@ -43,7 +43,7 @@ class ApiClient {
               refreshToken,
             });
 
-            const { accessToken, refreshToken: newRefreshToken } = response.data;
+            const { accessToken, refreshToken: newRefreshToken } = response.data.data;
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', newRefreshToken);
 
@@ -52,6 +52,7 @@ class ApiClient {
           } catch (refreshError) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
+            localStorage.removeItem('auth-storage');
             window.location.href = '/login';
             return Promise.reject(refreshError);
           }
