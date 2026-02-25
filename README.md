@@ -397,7 +397,7 @@ Vercel is recommended for deploying the FinBoss Web frontend due to excellent Re
    - In Vercel Project Settings, go to Environment Variables
    - Add `VITE_API_BASE_URL` pointing to your deployed API:
      ```
-     VITE_API_BASE_URL=https://finbossapi-gx2r7kziwa-uc.a.run.app
+     VITE_API_BASE_URL=https://finbossapi-618844932346.us-central1.run.app
      ```
 
 3. **Deploy**:
@@ -408,13 +408,13 @@ Vercel is recommended for deploying the FinBoss Web frontend due to excellent Re
 
 | Variable | Example Value |
 |----------|---------------|
-| `VITE_API_BASE_URL` | `https://finbossapi-gx2r7kziwa-uc.a.run.app` |
+| `VITE_API_BASE_URL` | `https://finbossapi-618844932346.us-central1.run.app` |
 
 ### Backend API Deployment
 
 The FinBoss API is deployed on Google Cloud Run:
-- **Live URL**: `https://finbossapi-gx2r7kziwa-uc.a.run.app`
-- **API Docs**: `https://finbossapi-gx2r7kziwa-uc.a.run.app/api-docs`
+- **Live URL**: `https://finbossapi-618844932346.us-central1.run.app`
+- **API Docs**: `https://finbossapi-618844932346.us-central1.run.app/api-docs`
 
 See [FinBossAPI README](https://github.com/preetanshumishra/FinBossAPI) for backend deployment details.
 
