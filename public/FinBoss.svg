@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1C2F62"/>
+      <stop offset="100%" stop-color="#060C1F"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#F08C00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+
+  <!-- Subtle horizontal grid lines -->
+  <line x1="120" y1="350" x2="904" y2="350" stroke="#FFFFFF" stroke-width="2" opacity="0.07"/>
+  <line x1="120" y1="500" x2="904" y2="500" stroke="#FFFFFF" stroke-width="2" opacity="0.07"/>
+  <line x1="120" y1="650" x2="904" y2="650" stroke="#FFFFFF" stroke-width="2" opacity="0.07"/>
+
+  <!-- Baseline -->
+  <line x1="120" y1="844" x2="904" y2="844" stroke="#FFFFFF" stroke-width="4" opacity="0.18"/>
+
+  <!-- Bar 1 (shortest) -->
+  <rect x="142" y="680" width="132" height="164" rx="18" fill="url(#bar)" opacity="0.35"/>
+
+  <!-- Bar 2 -->
+  <rect x="314" y="530" width="132" height="314" rx="18" fill="url(#bar)" opacity="0.55"/>
+
+  <!-- Bar 3 -->
+  <rect x="486" y="390" width="132" height="454" rx="18" fill="url(#bar)" opacity="0.75"/>
+
+  <!-- Bar 4 (tallest) -->
+  <rect x="658" y="230" width="132" height="614" rx="18" fill="url(#bar)"/>
+
+  <!-- Trend line connecting top-centers of bars -->
+  <polyline
+    points="208,680 380,530 552,390 724,230"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="34"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.92"
+  />
+
+  <!-- Gold dots at each data point -->
+  <circle cx="208" cy="680" r="22" fill="#FFD93D"/>
+  <circle cx="380" cy="530" r="22" fill="#FFD93D"/>
+  <circle cx="552" cy="390" r="22" fill="#FFD93D"/>
+
+  <!-- Larger glowing dot at peak -->
+  <circle cx="724" cy="230" r="40" fill="#FFD93D" opacity="0.25"/>
+  <circle cx="724" cy="230" r="28" fill="#FFD93D"/>
+
+  <!-- Upward arrow head at peak -->
+  <path
+    d="M 694 260 L 724 218 L 754 260"
+    fill="none"
+    stroke="#FFD93D"
+    stroke-width="22"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
